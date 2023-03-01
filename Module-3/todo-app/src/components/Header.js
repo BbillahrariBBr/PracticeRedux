@@ -2,8 +2,18 @@ import React from 'react'
 import noteImage from "../assets/images/notes.png"
 import tickImage from "../assets/images/double-tick.png"
 import plusImage from "../assets/images/plus.png"
+import { useDispatch } from 'react-redux';
+import { allCompleted, clearCompleted } from "../redux/todos/actions";
 
 export default function Header() {
+    const dispatch = useDispatch()
+    const handelClearComplete = () => {
+        dispatch(clearCompleted())
+    }
+
+    const handelAllComplete = () => {
+        dispatch(allCompleted())
+    }
     return (
         <div>
             <form
@@ -26,7 +36,7 @@ export default function Header() {
             </form>
 
             <ul className="flex justify-between my-4 text-xs text-gray-500">
-                <li className="flex space-x-1 cursor-pointer">
+                <li className="flex space-x-1 cursor-pointer" onClick={handelAllComplete}>
                     <img
                         className="w-4 h-4"
                         src={tickImage}
@@ -34,7 +44,7 @@ export default function Header() {
                     />
                     <span>Complete All Tasks</span>
                 </li>
-                <li className="cursor-pointer">Clear completed</li>
+                <li className="cursor-pointer" onClick={handelClearComplete}>Clear completed</li>
             </ul>
         </div>
     )
