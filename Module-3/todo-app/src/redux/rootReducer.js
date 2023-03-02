@@ -5,7 +5,7 @@ import { combineReducers } from "redux"
 
 const rootReducer = combineReducers({
     todos: todosReducer,
-    filter: filterReducer,
+    filters: filterReducer,
 });
 
 export default rootReducer;
